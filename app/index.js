@@ -22,7 +22,7 @@ setupCommands(bot);
 setupMessageProcessor(bot);
 
 const init = async () => {
-    await models.sequelize.sync();
+    await models.sequelize.sync({ force: true });
     console.log('DB init');
     bot.launch();
 }
