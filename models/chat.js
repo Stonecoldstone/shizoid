@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
       telegram_id: DataTypes.STRING,
       chat_type: DataTypes.ENUM("private", "group", "supergroup"),
       random_chance: {
-        type: DataTypes.INTEGER(2),
+        type: DataTypes.INTEGER,
         defaultValue: 10,
       },
     },

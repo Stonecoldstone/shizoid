@@ -18,10 +18,13 @@ bot.use(async (_, next) => {
 })
 bot.use(forgetMiddleware);
 
+console.log('Setting up commands.');
 setupCommands(bot);
+console.log('Setting up message processor');
 setupMessageProcessor(bot);
 
 const init = async () => {
+    console.log('before sync');
     await models.sequelize.sync();
     console.log('DB init');
     bot.launch();
@@ -29,9 +32,10 @@ const init = async () => {
 
 process.on('exit', exitHandler);
 process.on('SIGINT', exitHandler);
-process.on('uncaughtException', exitHandler);
+//process.on('uncaughtException', exitHandler);
 
 function exitHandler() {
+    console.log('Exit handler');
     models.sequelize.close();
     process.exit(0);
 }
