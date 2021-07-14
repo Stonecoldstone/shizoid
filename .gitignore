@@ -41,3 +41,7 @@ db.sqlite
 
 *.env
 *.7z
+
+.idea
+
+package-lock.json

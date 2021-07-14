@@ -7,7 +7,7 @@ const setupGabCommands = (bot) => {
 };
 
 const setupGetGab = (bot) =>
-    bot.command('get_gab', async (ctx) => {
+    bot.command(/^\/get_gab(?:@.+)?/, async (ctx) => {
         const chat = await models.Chat.getChat(ctx.message);
         return ctx.reply(chat.get('random_chance'), { reply_to_message_id: ctx.message.message_id });
     });
