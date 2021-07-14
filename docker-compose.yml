@@ -26,4 +26,3 @@ services:
             - ./init:/docker-entrypoint-initdb.d/
 volumes:
     postgresql-volume:
-        driver: 'local'
