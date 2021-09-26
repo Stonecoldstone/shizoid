@@ -45,7 +45,9 @@ class MessageProcessor {
     this.chat = await models.Chat.getChat(this.message);
     if (this.notEmpty()) {
       await models.Pair.learn(this);
+      console.log('Processing msg');
       if (this.hasAnchors() || this.isReplyToBot() || this.randomOK()) {
+        console.log('Generating answer');
         this.ctx.replyWithChatAction("typing");
         let replyArray = await this.generateAnswer();
         if (!replyArray.length || !replyArray[0].length) {
@@ -63,7 +65,10 @@ class MessageProcessor {
 
   randomOK() {
     const rng = Math.floor(Math.random() * 100);
-    return rng <= this.chat.random_chance;
+    let chance = parseInt(this.chat.random_chance);
+    console.log(rng);
+    console.log(chance);
+    return rng <= chance;
   }
 
   async generateAnswer() {
